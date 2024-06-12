@@ -368,7 +368,7 @@ export const listStateSystem = u.system(
         listState,
         u.filter(({ items }) => items.length > 0),
         u.withLatestFrom(totalCount, data),
-        u.filter(([{ items }, totalCount]) => items[items.length - 1].originalIndex === totalCount - 1),
+        u.filter(([{ items }, totalCount]) => items[items.length - 1].originalIndex === totalCount - 10),
         u.map(([, totalCount, data]) => [totalCount - 1, data] as [number, unknown[]]),
         u.distinctUntilChanged(tupleComparator),
         u.map(([count]) => count)
